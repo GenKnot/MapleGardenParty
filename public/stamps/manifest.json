@@ -1,0 +1,90 @@
+[
+  {
+    "id": "culture-quiz",
+    "name": "中华文化问答",
+    "earned": "culture-quiz-earned.svg",
+    "locked": "culture-quiz-locked.svg",
+    "pngEarned": "culture-quiz-earned.png",
+    "pngLocked": "culture-quiz-locked.png"
+  },
+  {
+    "id": "music",
+    "name": "听音识华韵",
+    "earned": "music-earned.svg",
+    "locked": "music-locked.svg",
+    "pngEarned": "music-earned.png",
+    "pngLocked": "music-locked.png"
+  },
+  {
+    "id": "poetry",
+    "name": "一画入诗",
+    "earned": "poetry-earned.svg",
+    "locked": "poetry-locked.svg",
+    "pngEarned": "poetry-earned.png",
+    "pngLocked": "poetry-locked.png"
+  },
+  {
+    "id": "calligraphy",
+    "name": "一笔一画",
+    "earned": "calligraphy-earned.svg",
+    "locked": "calligraphy-locked.svg",
+    "pngEarned": "calligraphy-earned.png",
+    "pngLocked": "calligraphy-locked.png"
+  },
+  {
+    "id": "zodiac",
+    "name": "寻找你的生肖",
+    "earned": "zodiac-earned.svg",
+    "locked": "zodiac-locked.svg",
+    "pngEarned": "zodiac-earned.png",
+    "pngLocked": "zodiac-locked.png"
+  },
+  {
+    "id": "greetings",
+    "name": "枫华寄语",
+    "earned": "greetings-earned.svg",
+    "locked": "greetings-locked.svg",
+    "pngEarned": "greetings-earned.png",
+    "pngLocked": "greetings-locked.png"
+  },
+  {
+    "id": "puzzle",
+    "name": "文化拼图",
+    "earned": "puzzle-earned.svg",
+    "locked": "puzzle-locked.svg",
+    "pngEarned": "puzzle-earned.png",
+    "pngLocked": "puzzle-locked.png"
+  },
+  {
+    "id": "wishes",
+    "name": "青年心愿墙",
+    "earned": "wishes-earned.svg",
+    "locked": "wishes-locked.svg",
+    "pngEarned": "wishes-earned.png",
+    "pngLocked": "wishes-locked.png"
+  },
+  {
+    "id": "riddles",
+    "name": "节庆谜趣",
+    "earned": "riddles-earned.svg",
+    "locked": "riddles-locked.svg",
+    "pngEarned": "riddles-earned.png",
+    "pngLocked": "riddles-locked.png"
+  },
+  {
+    "id": "pitch-pot",
+    "name": "传统投壶",
+    "earned": "pitch-pot-earned.svg",
+    "locked": "pitch-pot-locked.svg",
+    "pngEarned": "pitch-pot-earned.png",
+    "pngLocked": "pitch-pot-locked.png"
+  },
+  {
+    "id": "handcraft",
+    "name": "手工体验",
+    "earned": "handcraft-earned.svg",
+    "locked": "handcraft-locked.svg",
+    "pngEarned": "handcraft-earned.png",
+    "pngLocked": "handcraft-locked.png"
+  }
+]
