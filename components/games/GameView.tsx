@@ -11,6 +11,9 @@ import { Onsite } from "./Onsite";
 import { Poetry } from "./Poetry";
 import { Calligraphy } from "./Calligraphy";
 import { Greetings } from "./Greetings";
+import { Riddles } from "./Riddles";
+import { Music } from "./Music";
+import { Puzzle } from "./Puzzle";
 
 export function GameView({ id }: { id: GameId }) {
   const { t, me } = useApp();
@@ -35,6 +38,9 @@ export function GameView({ id }: { id: GameId }) {
         {meta.live && id === "poetry" && <Poetry />}
         {meta.live && id === "calligraphy" && <Calligraphy />}
         {meta.live && id === "greetings" && <Greetings />}
+        {meta.live && id === "riddles" && <Riddles />}
+        {meta.live && id === "music" && <Music />}
+        {meta.live && id === "puzzle" && <Puzzle />}
         {meta.live && meta.kind === "onsite" && <Onsite id={id} />}
       </div>
     </div>

@@ -19,6 +19,10 @@ export type GameMeta = {
 
 export const STAMPS_REQUIRED = 3;
 
+// Set to false to hide the music game (for example if the clips in public/audio/ are not ready).
+// While false the music card shows "coming soon" and its API refuses requests.
+export const MUSIC_READY = true;
+
 export const GAMES: GameMeta[] = [
   { id: "culture-quiz", kind: "online", live: true },
   { id: "zodiac", kind: "online", live: true },
@@ -28,9 +32,9 @@ export const GAMES: GameMeta[] = [
   { id: "poetry", kind: "online", live: true },
   { id: "calligraphy", kind: "online", live: true },
   { id: "greetings", kind: "online", live: true },
-  { id: "music", kind: "online", live: false },
-  { id: "puzzle", kind: "online", live: false },
-  { id: "riddles", kind: "online", live: false },
+  { id: "music", kind: "online", live: MUSIC_READY },
+  { id: "puzzle", kind: "online", live: true },
+  { id: "riddles", kind: "online", live: true },
 ];
 
 export const GAME_IDS = GAMES.map((g) => g.id);

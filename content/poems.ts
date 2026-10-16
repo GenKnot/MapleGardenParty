@@ -51,7 +51,7 @@ export const PAINTINGS: { id: PaintingId; answer: VerseId; file: string; t: Reco
   {
     id: "moon",
     answer: "moon",
-    file: "/paintings/moon.svg",
+    file: "/paintings/moon.jpg",
     t: {
       "zh-CN": { title: "山月", hint: "看看天上：是半轮月，不是太阳。", explain: "画里远山、半轮月和江水，正对应“半轮秋”和“江水流”，是秋夜的静谧。" },
       "zh-TW": { title: "山月", hint: "看看天上：是半輪月，不是太陽。", explain: "畫裡遠山、半輪月和江水，正對應「半輪秋」和「江水流」，是秋夜的靜謐。" },
@@ -62,7 +62,7 @@ export const PAINTINGS: { id: PaintingId; answer: VerseId; file: string; t: Reco
   {
     id: "willow",
     answer: "willow",
-    file: "/paintings/willow.svg",
+    file: "/paintings/willow.jpg",
     t: {
       "zh-CN": { title: "春柳", hint: "看看树：枝条像丝带一样垂下来。", explain: "细长柔软的枝条垂向水面，就是“万条垂下绿丝绦”，带着早春的清新。" },
       "zh-TW": { title: "春柳", hint: "看看樹：枝條像絲帶一樣垂下來。", explain: "細長柔軟的枝條垂向水面，就是「萬條垂下綠絲絛」，帶著早春的清新。" },
@@ -73,7 +73,7 @@ export const PAINTINGS: { id: PaintingId; answer: VerseId; file: string; t: Reco
   {
     id: "lotus",
     answer: "lotus",
-    file: "/paintings/lotus.svg",
+    file: "/paintings/lotus.jpg",
     t: {
       "zh-CN": { title: "荷塘", hint: "看看水面：大片圆圆的叶子和一朵红花。", explain: "满池的绿叶仿佛连到天边，一朵红荷在阳光下格外醒目，正是“别样红”。" },
       "zh-TW": { title: "荷塘", hint: "看看水面：大片圓圓的葉子和一朵紅花。", explain: "滿池的綠葉彷彿連到天邊，一朵紅荷在陽光下格外醒目，正是「別樣紅」。" },
