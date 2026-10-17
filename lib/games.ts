@@ -15,6 +15,7 @@ export type GameMeta = {
   id: GameId;
   kind: "online" | "onsite";
   live: boolean;
+  hidden?: boolean;
 };
 
 export const STAMPS_REQUIRED = 3;
@@ -27,8 +28,10 @@ export const GAMES: GameMeta[] = [
   { id: "culture-quiz", kind: "online", live: true },
   { id: "zodiac", kind: "online", live: true },
   { id: "wishes", kind: "online", live: true },
-  { id: "pitch-pot", kind: "onsite", live: true },
-  { id: "handcraft", kind: "onsite", live: true },
+  // On-site activities need a volunteer to confirm them, so they are hidden for this event.
+  // To bring one back, set live: true and remove hidden.
+  { id: "pitch-pot", kind: "onsite", live: false, hidden: true },
+  { id: "handcraft", kind: "onsite", live: false, hidden: true },
   { id: "poetry", kind: "online", live: true },
   { id: "calligraphy", kind: "online", live: true },
   { id: "greetings", kind: "online", live: true },
@@ -39,7 +42,9 @@ export const GAMES: GameMeta[] = [
 
 export const GAME_IDS = GAMES.map((g) => g.id);
 export const LIVE_GAME_IDS = GAMES.filter((g) => g.live).map((g) => g.id);
-export const ONSITE_GAME_IDS = GAMES.filter((g) => g.kind === "onsite").map((g) => g.id);
+export const ONSITE_GAME_IDS = GAMES.filter((g) => g.kind === "onsite" && g.live).map((g) => g.id);
+export const HAS_ONSITE = ONSITE_GAME_IDS.length > 0;
+export const VISIBLE_GAMES = GAMES.filter((g) => !g.hidden);
 
 export function isGameId(v: unknown): v is GameId {
   return typeof v === "string" && (GAME_IDS as string[]).includes(v);

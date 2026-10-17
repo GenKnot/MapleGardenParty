@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { GAMES, ONSITE_GAME_IDS, type GameId } from "@/lib/games";
+import { GAMES, HAS_ONSITE, ONSITE_GAME_IDS, type GameId } from "@/lib/games";
 import { zhCN } from "@/lib/i18n/zh-CN";
 
 type Tab = "redeem" | "confirm" | "stats";
@@ -62,7 +62,9 @@ export default function Staff() {
             ["confirm", "线下确认"],
             ["stats", "统计"],
           ] as const
-        ).map(([id, label]) => (
+        )
+          .filter(([id]) => id !== "confirm" || HAS_ONSITE)
+          .map(([id, label]) => (
           <button
             key={id}
             role="tab"

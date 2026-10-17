@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useApp } from "@/components/AppProvider";
 import { StampImg } from "@/components/StampImg";
-import { GAMES, STAMPS_REQUIRED } from "@/lib/games";
+import { GAMES, HAS_ONSITE, STAMPS_REQUIRED } from "@/lib/games";
 
 export default function Stamps() {
   const { me, t, refresh } = useApp();
@@ -64,11 +64,13 @@ export default function Stamps() {
         })}
       </ul>
 
-      <section className="card mt-5 p-5 text-center">
-        <p className="text-sm text-muted">{t("stamps.myCode")}</p>
-        <p className="mt-1 font-mono text-3xl font-bold tracking-[0.3em]">{me.shortCode}</p>
-        <p className="mt-2 text-xs text-muted">{t("stamps.codeHint")}</p>
-      </section>
+      {HAS_ONSITE && (
+        <section className="card mt-5 p-5 text-center">
+          <p className="text-sm text-muted">{t("stamps.myCode")}</p>
+          <p className="mt-1 font-mono text-3xl font-bold tracking-[0.3em]">{me.shortCode}</p>
+          <p className="mt-2 text-xs text-muted">{t("stamps.codeHint")}</p>
+        </section>
+      )}
     </div>
   );
 }

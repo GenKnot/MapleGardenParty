@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useApp } from "@/components/AppProvider";
 import { StampImg } from "@/components/StampImg";
-import { GAMES, STAMPS_REQUIRED } from "@/lib/games";
+import { HAS_ONSITE, STAMPS_REQUIRED, VISIBLE_GAMES } from "@/lib/games";
 
 type Filter = "all" | "online" | "onsite";
 
@@ -14,7 +14,7 @@ export default function Explore() {
   if (!me) return null;
 
   const n = Math.min(me.stamps.length, STAMPS_REQUIRED);
-  const list = GAMES.filter((g) => filter === "all" || g.kind === filter);
+  const list = VISIBLE_GAMES.filter((g) => filter === "all" || g.kind === filter);
   const filters: { id: Filter; label: string }[] = [
     { id: "all", label: t("explore.all") },
     { id: "online", label: t("explore.online") },
@@ -44,20 +44,22 @@ export default function Explore() {
         )}
       </section>
 
-      <div role="group" className="mt-5 flex gap-2">
-        {filters.map((f) => (
-          <button
-            key={f.id}
-            aria-pressed={filter === f.id}
-            onClick={() => setFilter(f.id)}
-            className={`min-h-11 rounded-full border px-5 text-sm font-medium ${
-              filter === f.id ? "border-ink bg-ink text-paper" : "border-gold/70 bg-paper"
-            }`}
-          >
-            {f.label}
-          </button>
-        ))}
-      </div>
+      {HAS_ONSITE && (
+        <div role="group" className="mt-5 flex gap-2">
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              aria-pressed={filter === f.id}
+              onClick={() => setFilter(f.id)}
+              className={`min-h-11 rounded-full border px-5 text-sm font-medium ${
+                filter === f.id ? "border-ink bg-ink text-paper" : "border-gold/70 bg-paper"
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
         {list.map((g) => {

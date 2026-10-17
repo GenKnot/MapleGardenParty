@@ -253,32 +253,49 @@ export async function renderSouvenir(o: {
 
   ctx.font = `500 38px ${SERIF}`;
   ctx.fillStyle = C.muted;
-  ctx.fillText(o.forLabel, CARD_W / 2, 640);
+  ctx.fillText(o.forLabel, CARD_W / 2, 600);
   const nameFit = fitText(ctx, o.name, CARD_W - 300, 2, 96, 52);
   ctx.font = `700 ${nameFit.size}px ${SERIF}`;
   ctx.fillStyle = C.cinnabar;
-  let y = 740;
+  let y = 700;
   for (const line of nameFit.lines) {
     ctx.fillText(line, CARD_W / 2, y);
     y += nameFit.size * 1.2;
   }
 
-  // Earned stamps, up to 4 per row
-  const imgs = await Promise.all(o.stamps.map((id) => loadImage(`/stamps/${id}-earned.svg`).catch(() => null)));
-  const per = Math.min(4, Math.max(1, imgs.length));
-  const cell = 190;
-  const gap = 30;
-  const rowW = per * cell + (per - 1) * gap;
-  const top = y + 40;
-  imgs.forEach((im, i) => {
-    if (!im) return;
-    const row = Math.floor(i / per);
-    const col = i % per;
-    const inRow = Math.min(per, imgs.length - row * per);
-    const w = inRow * cell + (inRow - 1) * gap;
-    const x0 = (CARD_W - (inRow === per ? rowW : w)) / 2;
-    ctx.drawImage(im, x0 + col * (cell + gap), top + row * (cell + gap), cell, cell);
-  });
+  // Earned stamps: pick the column count that gives the largest stamps that still fit the free area.
+  const loaded = await Promise.all(o.stamps.map((id) => loadImage(`/stamps/${id}-earned.svg`).catch(() => null)));
+  const imgs = loaded.filter((im): im is HTMLImageElement => im !== null);
+  const n = imgs.length;
+  if (n > 0) {
+    const gap = 14;
+    const maxCell = 190;
+    const innerW = CARD_W - 140;
+    const areaTop = y + 30;
+    const areaH = CARD_H - 245 - areaTop;
+    let cols = 1;
+    let cell = 0;
+    for (let c = 1; c <= Math.min(n, 8); c++) {
+      const rows = Math.ceil(n / c);
+      const size = Math.min(maxCell, (innerW - (c - 1) * gap) / c, (areaH - (rows - 1) * gap) / rows);
+      if (size > cell + 0.5) {
+        cell = size;
+        cols = c;
+      }
+    }
+    cell = Math.floor(cell);
+    const rows = Math.ceil(n / cols);
+    const blockH = rows * cell + (rows - 1) * gap;
+    const top = areaTop + Math.max(0, (areaH - blockH) / 2);
+    imgs.forEach((im, i) => {
+      const row = Math.floor(i / cols);
+      const col = i % cols;
+      const inRow = Math.min(cols, n - row * cols);
+      const rowW = inRow * cell + (inRow - 1) * gap;
+      const x0 = (CARD_W - rowW) / 2;
+      ctx.drawImage(im, x0 + col * (cell + gap), top + row * (cell + gap), cell, cell);
+    });
+  }
 
   ctx.font = `500 40px ${SERIF}`;
   ctx.fillStyle = C.ink;
